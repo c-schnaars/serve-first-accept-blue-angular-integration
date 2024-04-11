@@ -1,15 +1,9 @@
-
-
 <form>
   <div id="iframe-container"></div>
   <div id="error-message"></div>
   <div>
-    <button type="button" id="charge" (click)="xListenForToken($event)">Charge</button>
+    <button type="button" id="charge" (click)="submitCharge($event)">Charge</button>
   </div>
 </form>
-
-<!-- <script defer>
-  const chargeButton = document.querySelector('#charge');
-</script> -->
 
 <router-outlet />
