@@ -20,8 +20,10 @@ yarn-error.log
 .settings/
 *.sublime-workspace
 
-# Visual Studio Code
+# Visual Studio/ Visual Studio Code
+.vs/*
 .vscode/*
+ServeFirst.sln
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
