@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TokenizationResult } from './_models/tokenizationResult';
 
-declare function HostedTokenization(any: any): void;
-declare function getNonceToken(): void;
-declare function listenForToken(event: Event): void;
-declare function OnInit(): void;
+declare function listenForToken(): TokenizationResult;
+declare function initializeAcceptBlue(): void;
 
 @Component({
   selector: 'app-root',
@@ -14,16 +13,15 @@ declare function OnInit(): void;
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-
-  acceptBlueScriptElement: HTMLScriptElement = {} as HTMLScriptElement;
-  acceptBlueFormScriptElement: HTMLScriptElement = {} as HTMLScriptElement;
-  cardForm: any = {};
+  tokenizationResult: TokenizationResult = {} as TokenizationResult;
 
   ngOnInit(): void {
-    OnInit();
+    initializeAcceptBlue();
   }
 
-  submitCharge(event: Event) {
-    listenForToken(event);
+  async submitCharge() {
+    const result = await listenForToken() as TokenizationResult;
+    this.tokenizationResult = result;
+    console.log(this.tokenizationResult);
   }
 }

@@ -1,18 +1,17 @@
 let cardForm = null;
 
-function OnInit() {
-  const your_tokenization_key = 'pk_kEGLdMcAUw0TAOr38cCUtsuxZFg8h';
+function initializeAcceptBlue() {
+  const your_tokenization_key = 'YOUR_TOKENIZATIOIN_KEY';
   const hostedTokenization = new window.HostedTokenization(your_tokenization_key);
   cardForm = hostedTokenization.create('card-form');
   cardForm.mount('#iframe-container');
 }
 
-async function listenForToken(event) {
+async function listenForToken() {
   try {
     const result = await cardForm.getNonceToken();
-    if (result.nonce) {
-      const token = result.nonce;
-      console.log('Token: ' + token);
+    if (result) {
+      return result;
     }
   }
   catch(err) {
