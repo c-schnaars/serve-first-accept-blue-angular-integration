@@ -5,5 +5,7 @@ export interface TokenizationResult {
   last4: string,
   expiryMonth: number,
   expiryYear: number,
-  nonce: string
+  nonce: string,
+  surcharge: object | null, // { type: string ('percent' or 'currency'), value: number }
+  binType: string | null // C - Credit Card, D - Debit Card, null - Unknown
 }
